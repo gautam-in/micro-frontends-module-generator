@@ -26,7 +26,7 @@ const externalCssLoaderClient = {
   use: [MiniCssExtractPlugin.loader, "css-loader"]
 };
 
-const client = [
+const shared = [
   {
     oneOf: [babelLoader, cssLoaderClient, externalCssLoaderClient]
   }
@@ -38,6 +38,6 @@ const server = [
 ];
 
 module.exports = {
-  client,
+  shared,
   server
 };

@@ -18,13 +18,7 @@ module.exports = (env, args) => {
         path.resolve(__dirname, "../../src/server.js")
       ]
     },
-    externals: [
-      nodeExternals({
-        // we still want imported css from external files to be bundled otherwise 3rd party packages
-        // which require us to include their own css would not work properly
-        whitelist: /\.css$/
-      })
-    ],
+    externals: [nodeExternals()],
     output: {
       path: paths.serverBuild,
       filename: "server.js"

@@ -3,17 +3,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const common = [];
 
-const client = [
-  new webpack.DefinePlugin({
-    __SERVER__: "false",
-    __CLIENT__: "true"
-  }),
-  new MiniCssExtractPlugin({
-    filename: "[name].css",
-    chunkFilename: "[name].[id].css"
-  })
-];
-
 const server = [
   new webpack.DefinePlugin({
     __SERVER__: "true",
@@ -27,13 +16,13 @@ const shared = [
     __CLIENT__: "true"
   }),
   new MiniCssExtractPlugin({
-    filename: "[name].css"
+    filename: "[name].css",
+    chunkFilename: "[name].[id].css"
   })
 ];
 
 module.exports = {
   common,
-  client,
   server,
   shared
 };

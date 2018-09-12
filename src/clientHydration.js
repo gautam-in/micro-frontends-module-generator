@@ -1,16 +1,11 @@
 import React from "react";
 import { hydrate } from "react-dom";
 import { Provider } from "react-redux";
-
-// import Left from "./Left";
-// import { configureStore } from "./store";
-// import rootReducer from "./store/rootReducer";
-// import { initialize } from "./store/app/actions";
+import configureStore from "./configureStore";
 
 export default ({
   moduleName,
   component: Component,
-  configureStore,
   rootReducer,
   initialize
 }) => {

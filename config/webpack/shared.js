@@ -19,15 +19,16 @@ module.exports = (env, args) => {
       })
     ],
     entry: {
+      configureStore: path.resolve(__dirname, "../../src/configureStore.js"),
       left: path.resolve(__dirname, "../../src/modules/Left/Left.js"),
-      "left.store": path.resolve(
+      "left.reducer": path.resolve(
         __dirname,
-        "../../src/modules/Left/store/index.js"
+        "../../src/modules/Left/store/rootReducer.js"
       ),
       right: path.resolve(__dirname, "../../src/modules/Right/Right.js"),
-      "right.store": path.resolve(
+      "right.reducer": path.resolve(
         __dirname,
-        "../../src/modules/Right/store/index.js"
+        "../../src/modules/Right/store/rootReducer.js"
       )
     },
     plugins: [...plugins.shared],

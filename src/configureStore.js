@@ -1,7 +1,6 @@
 import thunk from "redux-thunk";
 import { applyMiddleware, compose } from "redux";
 import { createStore } from "redux-dynamic-reducer";
-import rootReducer from "./rootReducer";
 
 const configureStore = ({ initialState, middleware = [] } = {}) => {
   const devtools =
@@ -20,4 +19,4 @@ const configureStore = ({ initialState, middleware = [] } = {}) => {
   return store;
 };
 
-export { configureStore, rootReducer };
+export default configureStore;

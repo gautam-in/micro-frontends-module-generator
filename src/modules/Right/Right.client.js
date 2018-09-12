@@ -1,5 +1,4 @@
 import Right from "./Right";
-import { configureStore } from "./store";
 import rootReducer from "./store/rootReducer";
 import { initialize } from "./store/app/actions";
 import clientHydration from "../../clientHydration";
@@ -7,7 +6,6 @@ import clientHydration from "../../clientHydration";
 clientHydration({
   moduleName: "Right",
   component: Right,
-  configureStore,
   rootReducer,
   initialize
 });

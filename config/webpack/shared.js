@@ -16,6 +16,7 @@ module.exports = (env, args) => {
     devtool: "eval-source-map",
     entry: {
       configureStore: path.resolve(__dirname, "../../src/configureStore.js"),
+      globalReducer: path.resolve(__dirname, "../../src/global/reducer"),
       [moduleNameLowerCase]: path.resolve(
         __dirname,
         "../../src/modules/" + moduleName + "/" + moduleName + ".js"

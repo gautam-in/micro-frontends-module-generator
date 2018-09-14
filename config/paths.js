@@ -8,12 +8,9 @@ const paths = {
   clientBuild: resolveApp("build/client"),
   serverBuild: resolveApp("build/server"),
   sharedBuild: resolveApp("build/shared"),
-  src: resolveApp("src"),
+  src: resolveApp("src")
 };
 
-paths.resolveModules = [
-  paths.src,
-  "node_modules"
-];
+paths.resolveModules = [paths.src, "node_modules"];
 
 module.exports = paths;

@@ -5,7 +5,7 @@ import "./Todo.css";
 const Todo = ({ task, onRemoveClick, onTaskClick }) => {
   return (
     <li className="todo list-group-item">
-      <div className="row">
+      <div className="row align-items-center">
         <div className="col">
           <button
             type="button"

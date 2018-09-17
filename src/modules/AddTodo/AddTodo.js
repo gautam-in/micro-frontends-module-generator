@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import ExecutionEnvironment from "exenv";
 
 import clientHydration from "../../clientHydration";
-import { insertTaskAction } from "./store/app/actions";
+import { insertTaskAction } from "../../global/actions";
+import { globalAction } from "redux-subspace";
 
 class AddTodo extends React.Component {
   onFormSubmit = event => {
@@ -43,7 +44,7 @@ class AddTodo extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   insertTask: task => {
-    dispatch(insertTaskAction(task));
+    dispatch(globalAction(insertTaskAction(task)));
   }
 });
 

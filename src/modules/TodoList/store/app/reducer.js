@@ -1,5 +1,5 @@
 import { ActionTypes } from "./constants";
-import { ActionTypes as AddTodoActionTypes } from "../../../AddTodo/store/app/constants";
+import { ActionTypes as GlobalActionTypes } from "../../../../global/constants";
 
 const initState = {
   todos: []
@@ -49,15 +49,15 @@ const todoListData = (state = initState, action) => {
       };
     }
 
-    case ActionTypes.REMOVE_TASK: {
+    case GlobalActionTypes.REMOVE_TASK: {
       return removeTask(state, action);
     }
 
-    case ActionTypes.MARK_TASK: {
+    case GlobalActionTypes.MARK_TASK: {
       return markTask(state, action);
     }
 
-    case AddTodoActionTypes.INSERT_TASK: {
+    case GlobalActionTypes.INSERT_TASK: {
       return insertTask(state, action);
     }
   }

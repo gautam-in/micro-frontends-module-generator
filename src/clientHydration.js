@@ -3,6 +3,7 @@ import { hydrate } from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./configureStore";
 import { SubspaceProvider } from "react-redux-subspace";
+import { namespaced, namespacedAction } from "redux-subspace";
 
 // import globalData from "./global/reducer";
 // import { initialize as initializeGlobal } from "./global/actions";
@@ -15,7 +16,8 @@ export default ({ moduleName, component: Component, reducer, initialize }) => {
       middleware: []
     });
 
-  if (reducer) store.attachReducers({ [moduleName]: reducer });
+  if (reducer)
+    store.attachReducers({ [moduleName]: namespaced(moduleName)(reducer) });
 
   // if (!window.store) {
   //   store.attachReducers({ globalData });
@@ -27,11 +29,18 @@ export default ({ moduleName, component: Component, reducer, initialize }) => {
   // }
 
   if (initialize)
-    store.dispatch(initialize(window.__PRELOADED_STATE__[moduleName]));
+    store.dispatch(
+      namespacedAction(moduleName)(
+        initialize(window.__PRELOADED_STATE__[moduleName])
+      )
+    );
 
   hydrate(
     <Provider store={store}>
-      <SubspaceProvider mapState={state => state[moduleName] || {}}>
+      <SubspaceProvider
+        mapState={state => state[moduleName] || {}}
+        namespace={moduleName}
+      >
         <Component />
       </SubspaceProvider>
     </Provider>,

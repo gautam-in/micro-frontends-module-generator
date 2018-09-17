@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import ExecutionEnvironment from "exenv";
 
 import "./TodoList.css";
-import { removeTaskAction, markTaskAction } from "./store/app/actions";
 import clientHydration from "../../clientHydration";
 import reducer from "./store/app/reducer";
 import { initialize } from "./store/app/actions";
 import Todo from "./components/Todo";
 import { ActionTypes } from "./store/app/constants";
+import { removeTaskAction, markTaskAction } from "../../global/actions";
 
 class TodoList extends React.Component {
   componentWillMount() {

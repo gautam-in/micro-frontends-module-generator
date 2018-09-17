@@ -11,8 +11,8 @@ yarn build:modules --module=<module name>
 e.g.
 
 ```
-yarn build:moudles --module=TodoList
-yarn build:moudles --module=AddTodo
+yarn build:modules --module=TodoList
+yarn build:modules --module=AddTodo
 ```
 
 To build vendor file

@@ -7,6 +7,7 @@
   },
   "scripts": {
     "build:modules": "./node_modules/.bin/webpack-cli --config ./config/webpack/shared.js",
+    "build:vendors": "./node_modules/.bin/webpack-cli --config ./config/webpack/vendors.js",
     "build:server": "rimraf ./build/server && ./node_modules/.bin/webpack-cli --config ./config/webpack/server.js",
     "start": "npm run build:server && node build/server/server.js"
   },
@@ -35,6 +36,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
+    "react-redux-subspace": "^2.5.0",
     "redux": "^4.0.0",
     "redux-dynamic-reducer": "^2.0.2",
     "redux-thunk": "^2.3.0",

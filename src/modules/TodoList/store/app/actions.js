@@ -1,7 +1,7 @@
 import { ActionTypes } from "./constants";
 
 export const initialize = state => ({
-  type: ActionTypes.INIT_TODOLIST,
+  type: ActionTypes.INIT,
   state
 });
 

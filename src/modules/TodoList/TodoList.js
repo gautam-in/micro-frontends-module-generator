@@ -5,34 +5,55 @@ import ExecutionEnvironment from "exenv";
 import "./TodoList.css";
 import { removeTaskAction, markTaskAction } from "./store/app/actions";
 import clientHydration from "../../clientHydration";
-import rootReducer from "./store/rootReducer";
+import reducer from "./store/app/reducer";
 import { initialize } from "./store/app/actions";
-import globalData from "../../global/reducer";
 import Todo from "./components/Todo";
+import { ActionTypes } from "./store/app/constants";
 
-const TodoList = ({ todos, removeTask, markTask }) => (
-  <div className="todo-list">
-    <h4>Tasks</h4>
-    {todos.size ? (
-      <ul className="list-group">
-        {Array.from(todos.entries()).map(([id, task]) => (
-          <Todo
-            key={id}
-            task={task}
-            onRemoveClick={removeTask}
-            onTaskClick={markTask}
-          />
-        ))}
-      </ul>
-    ) : (
-      <p className="text-center">No task added yet.</p>
-    )}
-  </div>
-);
+class TodoList extends React.Component {
+  componentWillMount() {
+    const { todos } = this.props;
+    this.setState({
+      todos: todos.reduce((accu, curr) => accu.set(curr["id"], curr), new Map())
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { todos } = nextProps;
+    this.setState({
+      todos: todos.reduce((accu, curr) => accu.set(curr["id"], curr), new Map())
+    });
+  }
+
+  render() {
+    const { removeTask, markTask } = this.props;
+    const { todos } = this.state;
+
+    return (
+      <div className="todo-list">
+        <h4>Tasks</h4>
+        {todos.size ? (
+          <ul className="list-group">
+            {Array.from(todos.entries()).map(([id, task]) => (
+              <Todo
+                key={id}
+                task={task}
+                onRemoveClick={removeTask}
+                onTaskClick={markTask}
+              />
+            ))}
+          </ul>
+        ) : (
+          <p className="text-center">No task added yet.</p>
+        )}
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {
-    todos: state.globalData.todos
+    todos: state.todos
   };
 };
 
@@ -52,13 +73,15 @@ const connectedTodoList = connect(
 
 export default connectedTodoList;
 
-export { rootReducer };
+export { reducer };
+
+export { ActionTypes };
 
 if (ExecutionEnvironment.canUseDOM) {
   clientHydration({
     moduleName: "TodoList",
     component: connectedTodoList,
-    rootReducer,
+    reducer,
     initialize
   });
 }

@@ -3,12 +3,15 @@ import { connect } from "react-redux";
 import ExecutionEnvironment from "exenv";
 
 import clientHydration from "../../clientHydration";
+import "./TaskCounter.css";
 
 const TaskCounter = ({ todos }) => {
   return (
     <div>
       <h4>Total Tasks:</h4>
-      <p className="display-3 text-center">{todos ? todos.length : null}</p>
+      <p className="display-3 text-center count">
+        {todos ? todos.length : null}
+      </p>
     </div>
   );
 };

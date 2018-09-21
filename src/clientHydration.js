@@ -38,7 +38,7 @@ export default ({ moduleName, component: Component, reducer, initialize }) => {
   hydrate(
     <Provider store={store}>
       <SubspaceProvider
-        mapState={state => state[moduleName] || {}}
+        mapState={state => ({ ...state[moduleName], rootState: state } || {})}
         namespace={moduleName}
       >
         <Component />

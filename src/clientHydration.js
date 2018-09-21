@@ -1,5 +1,5 @@
 import React from "react";
-import { hydrate } from "react-dom";
+import { hydrate, render } from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./configureStore";
 import { SubspaceProvider } from "react-redux-subspace";
@@ -35,7 +35,11 @@ export default ({ moduleName, component: Component, reducer, initialize }) => {
       )
     );
 
-  hydrate(
+  const renderFunction = document.getElementById(moduleName).innerHTML
+    ? hydrate
+    : render;
+
+  renderFunction(
     <Provider store={store}>
       <SubspaceProvider
         mapState={state => ({ ...state[moduleName], rootState: state } || {})}

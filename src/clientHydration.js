@@ -38,7 +38,6 @@ export default ({ moduleName, component: Component, reducer, initialize }) => {
   const renderFunction = document.getElementById(moduleName).innerHTML
     ? hydrate
     : render;
-
   renderFunction(
     <Provider store={store}>
       <SubspaceProvider

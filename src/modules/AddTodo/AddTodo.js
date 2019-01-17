@@ -5,20 +5,27 @@ import ExecutionEnvironment from "exenv";
 import clientHydration from "../../clientHydration";
 import { insertTaskAction } from "../../global/actions";
 import { globalAction } from "redux-subspace";
+import styled from "styled-components";
 
 class AddTodo extends React.Component {
   onFormSubmit = event => {
     const { insertTask } = this.props;
-
     event.preventDefault();
     if (this.inputRef.value.trim()) insertTask(this.inputRef.value.trim());
     event.target.reset();
   };
 
   render = () => {
+    const Text = styled.h4`
+      font-size:1rem;
+      color: red;
+    `;
+    const ComponentWrapper = styled.div`
+      padding-left: 1rem!important;  
+    `;
     return (
-      <div className="px-3">
-        <h4>Add new Task</h4>
+      <ComponentWrapper>
+        <Text>Add new Task</Text>
         <form onSubmit={this.onFormSubmit}>
           <div className="row align-items-start">
             <div className="form-group col">
@@ -37,7 +44,7 @@ class AddTodo extends React.Component {
             </button>
           </div>
         </form>
-      </div>
+      </ComponentWrapper>
     );
   };
 }

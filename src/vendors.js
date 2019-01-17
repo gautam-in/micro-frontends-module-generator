@@ -5,3 +5,4 @@ export const ReactRedux = require("react-redux");
 export const ReduxDynamicReducer = require("redux-dynamic-reducer");
 export const ReactReduxSubspace = require("react-redux-subspace");
 export const ReduxThunk = require("redux-thunk");
+export const styled = require("styled-components");

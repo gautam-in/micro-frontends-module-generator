@@ -5,7 +5,7 @@ import ExecutionEnvironment from "exenv";
 import clientHydration from "../../clientHydration";
 import { insertTaskAction } from "../../global/actions";
 import { globalAction } from "redux-subspace";
-import styled from "styled-components";
+//import styled from "styled-components";
 
 class AddTodo extends React.Component {
   onFormSubmit = event => {
@@ -16,11 +16,11 @@ class AddTodo extends React.Component {
   };
 
   render = () => {
-    const Text = styled.h4`
+    const Text = this.props.styled.h4`
       font-size:1rem;
-      color: red;
+      color: ${props => props.theme.primaryColor};
     `;
-    const ComponentWrapper = styled.div`
+    const ComponentWrapper = this.props.styled.div`
       padding-left: 1rem!important;  
     `;
     return (
